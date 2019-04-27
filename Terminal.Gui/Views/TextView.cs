@@ -513,7 +513,9 @@ namespace Terminal.Gui {
 			}
 			PositionCursor ();
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
 		public override bool CanFocus {
 			get => true;
 			set { base.CanFocus = value; }

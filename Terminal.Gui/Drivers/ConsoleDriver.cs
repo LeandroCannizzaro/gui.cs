@@ -102,7 +102,10 @@ namespace Terminal.Gui {
 		{
 			this.value = value;
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="c"></param>
 		public static implicit operator int (Attribute c) => c.value;
 		public static implicit operator Attribute (int v) => new Attribute (v);
 	}

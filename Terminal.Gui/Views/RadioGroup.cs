@@ -74,7 +74,10 @@ namespace Terminal.Gui {
 				SetNeedsDisplay ();
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="region"></param>
 		public override void Redraw (Rect region)
 		{
 			base.Redraw (region);
@@ -85,12 +88,16 @@ namespace Terminal.Gui {
 				DrawHotString (radioLabels [i], HasFocus && i == cursor, ColorScheme);
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
 		public override void PositionCursor ()
 		{
 			Move (1, cursor);
 		}
-
+	/// <summary>
+	///	
+	/// </summary>
 		public Action<int> SelectionChanged;
 
 		/// <summary>
@@ -105,7 +112,11 @@ namespace Terminal.Gui {
 				SetNeedsDisplay ();
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="kb"></param>
+		/// <returns></returns>
 		public override bool ProcessColdKey (KeyEvent kb)
 		{
 			var key = kb.KeyValue;
@@ -157,7 +168,11 @@ namespace Terminal.Gui {
 			}
 			return base.ProcessKey (kb);
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="me"></param>
+		/// <returns></returns>
 		public override bool MouseEvent (MouseEvent me)
 		{
 			if (!me.Flags.HasFlag (MouseFlags.Button1Clicked))

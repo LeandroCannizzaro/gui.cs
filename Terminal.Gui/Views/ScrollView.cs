@@ -189,7 +189,11 @@ namespace Terminal.Gui {
 				}
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="me"></param>
+		/// <returns></returns>
 		public override bool MouseEvent(MouseEvent me)
 		{
 			if (me.Flags != MouseFlags.Button1Clicked)
@@ -236,7 +240,10 @@ namespace Terminal.Gui {
 	public class ScrollView : View {
 		View contentView;
 		ScrollBarView vertical, horizontal;
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="frame"></param>
 		public ScrollView (Rect frame) : base (frame)
 		{
 			contentView = new View (frame);
@@ -343,7 +350,10 @@ namespace Terminal.Gui {
 		/// This event is raised when the contents have scrolled
 		/// </summary>
 		public event Action<ScrollView> Scrolled;
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="region"></param>
 		public override void Redraw(Rect region)
 		{
 			var oldClip = ClipToBounds ();

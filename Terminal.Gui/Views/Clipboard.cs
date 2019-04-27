@@ -2,7 +2,10 @@
 using NStack;
 
 namespace Terminal.Gui {
-	public static class Clipboard {
-		public static ustring Contents { get; set; }
-	}
+    public static class Clipboard {
+	/// <summary>
+	/// 
+	/// </summary>
+	public static ustring Contents { get; set; }
+    }
 }

@@ -277,7 +277,13 @@ namespace Terminal.Gui {
 		Label nameFieldLabel, message, dirLabel;
 		TextField dirEntry, nameEntry;
 		internal DirListView dirListView;
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="title"></param>
+		/// <param name="prompt"></param>
+		/// <param name="nameFieldLabel"></param>
+		/// <param name="message"></param>
 		public FileDialog (ustring title, ustring prompt, ustring nameFieldLabel, ustring message) : base (title, Driver.Cols - 20, Driver.Rows - 5, null)
 		{
 			this.message = new Label (Rect.Empty, "MESSAGE" + message);
@@ -340,7 +346,9 @@ namespace Terminal.Gui {
 		}
 
 		internal bool canceled;
-
+		/// <summary>
+		/// 
+		/// </summary>
 		public override void WillPresent ()
 		{
 			base.WillPresent ();

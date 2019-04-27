@@ -227,7 +227,12 @@ namespace Terminal.Gui {
 					 sz1.Height + sz2.Height);
 
 		}
-		
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="sz1"></param>
+		/// <param name="sz2"></param>
+		/// <returns></returns>
 		public static Size Subtract (Size sz1, Size sz2)
 		{
 			return new Size (sz1.Width - sz2.Width, 

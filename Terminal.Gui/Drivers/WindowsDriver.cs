@@ -101,9 +101,11 @@ namespace Terminal.Gui {
 			}
 		}
 
-		private bool ContinueListeningForConsoleEvents = true;
+#pragma warning disable IDE0052 // Remove unread private members
+	private bool ContinueListeningForConsoleEvents = true;
+#pragma warning restore IDE0052 // Remove unread private members
 
-		public uint ConsoleMode {
+	public uint ConsoleMode {
 			get {
 				uint v;
 				GetConsoleMode (InputHandle, out v);

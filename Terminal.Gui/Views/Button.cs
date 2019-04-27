@@ -143,7 +143,10 @@ namespace Terminal.Gui {
 			this.IsDefault = is_default;
 			Text = text;
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="region"></param>
 		public override void Redraw (Rect region)
 		{
 			Driver.SetAttribute (HasFocus ? ColorScheme.Focus : ColorScheme.Normal);

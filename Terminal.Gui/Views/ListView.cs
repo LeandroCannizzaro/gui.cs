@@ -389,7 +389,11 @@ namespace Terminal.Gui {
 		{
 			Move (0, selected-top);
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="me"></param>
+		/// <returns></returns>
 		public override bool MouseEvent(MouseEvent me)
 		{
 			if (!me.Flags.HasFlag (MouseFlags.Button1Clicked))

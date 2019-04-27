@@ -79,7 +79,10 @@ namespace Terminal.Gui {
 
 			SetNeedsDisplay ();
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="region"></param>
 		public override void Redraw(Rect region)
 		{
 			Driver.SetAttribute (ColorScheme.Normal);

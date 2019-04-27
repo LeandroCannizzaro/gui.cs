@@ -54,7 +54,9 @@ namespace Terminal.Gui {
 			Add (button);
 		}
 
-
+		/// <summary>
+		/// 
+		/// </summary>
 		public override void LayoutSubviews ()
 		{
 			base.LayoutSubviews ();
@@ -78,7 +80,11 @@ namespace Terminal.Gui {
 				start += bf.Width + 1;
 			}
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="kb"></param>
+		/// <returns></returns>
 		public override bool ProcessKey (KeyEvent kb)
 		{
 			switch (kb.Key) {
