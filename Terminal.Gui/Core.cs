@@ -1917,7 +1917,7 @@ namespace Terminal.Gui {
 		    Driver.UpdateCursor();
 	    }
 	}
-	internal static bool DebugDrawBounds;
+	internal static bool DebugDrawBounds = false;
 
 	// Need to look into why this does not work properly.
 	static void DrawBounds(View v)

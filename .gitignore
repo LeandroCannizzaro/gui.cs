@@ -5,3 +5,6 @@ obj
 *~
 packages
 .vs
+Terminal.Gui/.vshistory/
+Terminal.Gui/Dialogs/.vshistory/
+Terminal.Gui/Drivers/.vshistory/
