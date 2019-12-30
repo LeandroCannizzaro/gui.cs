@@ -33,7 +33,7 @@ using NStack;
 
 namespace Terminal.Gui {
     class TextModel {
-	List<List<Rune>> lines;
+	List<List<System.Rune>> lines;
 
 	public bool LoadFile(string file)
 	{
@@ -50,9 +50,9 @@ namespace Terminal.Gui {
 
 	// Turns the ustring into runes, this does not split the 
 	// contents on a newline if it is present.
-	internal static List<Rune> ToRunes(ustring str)
+	internal static List<System.Rune> ToRunes(ustring str)
 	{
-	    List<Rune> runes = new List<Rune>();
+	    List<System.Rune> runes = new List<System.Rune>();
 	    foreach (var x in str.ToRunes()) {
 		runes.Add(x);
 	    }
@@ -60,9 +60,9 @@ namespace Terminal.Gui {
 	}
 
 	// Splits a string into a List that contains a List<Rune> for each line
-	public static List<List<Rune>> StringToRunes(ustring content)
+	public static List<List<System.Rune>> StringToRunes(ustring content)
 	{
-	    var lines = new List<List<Rune>>();
+	    var lines = new List<List<System.Rune>>();
 	    int start = 0, i = 0;
 	    for (; i < content.Length; i++) {
 		if (content[i] == 10) {
@@ -89,7 +89,7 @@ namespace Terminal.Gui {
 	    if (input == null)
 		throw new ArgumentNullException(nameof(input));
 
-	    lines = new List<List<Rune>>();
+	    lines = new List<List<System.Rune>>();
 	    var buff = new BufferedStream(input);
 	    int v;
 	    var line = new List<byte>();
@@ -130,14 +130,14 @@ namespace Terminal.Gui {
 	/// </summary>
 	/// <returns>The line.</returns>
 	/// <param name="line">Line number to retrieve.</param>
-	public List<Rune> GetLine(int line) => lines[line];
+	public List<System.Rune> GetLine(int line) => lines[line];
 
 	/// <summary>
 	/// Adds a line to the model at the specified position.
 	/// </summary>
 	/// <param name="pos">Line number where the line will be inserted.</param>
 	/// <param name="runes">The line of text, as a List of Rune.</param>
-	public void AddLine(int pos, List<Rune> runes)
+	public void AddLine(int pos, List<System.Rune> runes)
 	{
 	    lines.Insert(pos, runes);
 	}
@@ -434,10 +434,10 @@ namespace Terminal.Gui {
 	    ustring res = StringFromRunes(line.GetRange(startCol, line.Count - startCol));
 
 	    for (int row = startRow + 1; row < maxrow; row++) {
-		res = res + ustring.Make((Rune)10) + StringFromRunes(model.GetLine(row));
+		res = res + ustring.Make((System.Rune)10) + StringFromRunes(model.GetLine(row));
 	    }
 	    line = model.GetLine(maxrow);
-	    res = res + ustring.Make((Rune)10) + StringFromRunes(line.GetRange(0, endCol));
+	    res = res + ustring.Make((System.Rune)10) + StringFromRunes(line.GetRange(0, endCol));
 	    return res;
 	}
 
@@ -532,7 +532,7 @@ namespace Terminal.Gui {
 	    Clipboard.Contents = Clipboard.Contents + text;
 	}
 
-	void Insert(Rune rune)
+	void Insert(System.Rune rune)
 	{
 	    var line = GetCurrentLine();
 	    line.Insert(currentColumn, rune);
@@ -541,7 +541,7 @@ namespace Terminal.Gui {
 	    SetNeedsDisplay(new Rect(0, prow, Frame.Width, prow + 1));
 	}
 
-	ustring StringFromRunes(List<Rune> runes)
+	ustring StringFromRunes(List<System.Rune> runes)
 	{
 	    if (runes == null)
 		throw new ArgumentNullException(nameof(runes));
@@ -557,7 +557,7 @@ namespace Terminal.Gui {
 	    return ustring.Make(encoded);
 	}
 
-	List<Rune> GetCurrentLine() => model.GetLine(currentRow);
+	List<System.Rune> GetCurrentLine() => model.GetLine(currentRow);
 
 	void InsertText(ustring text)
 	{
@@ -654,7 +654,7 @@ namespace Terminal.Gui {
 	public override bool ProcessKey(KeyEvent kb)
 	{
 	    int restCount;
-	    List<Rune> rest;
+	    List<System.Rune> rest;
 
 	    // Handle some state here - whether the last command was a kill
 	    // operation and the column tracking (up/down)
@@ -834,7 +834,7 @@ namespace Terminal.Gui {
 		currentLine = GetCurrentLine();
 		if (currentLine.Count == 0) {
 		    model.RemoveLine(currentRow);
-		    var val = ustring.Make((Rune)'\n');
+		    var val = ustring.Make((System.Rune)'\n');
 		    if (lastWasKill)
 			AppendClipboard(val);
 		    else
@@ -935,7 +935,7 @@ namespace Terminal.Gui {
 	    return true;
 	}
 
-	IEnumerable<(int col, int row, Rune rune)> ForwardIterator(int col, int row)
+	IEnumerable<(int col, int row, System.Rune rune)> ForwardIterator(int col, int row)
 	{
 	    if (col < 0 || row < 0)
 		yield break;
@@ -955,9 +955,9 @@ namespace Terminal.Gui {
 	    }
 	}
 
-	Rune RuneAt(int col, int row) => model.GetLine(row)[col];
+	System.Rune RuneAt(int col, int row) => model.GetLine(row)[col];
 
-	bool MoveNext(ref int col, ref int row, out Rune rune)
+	bool MoveNext(ref int col, ref int row, out System.Rune rune)
 	{
 	    var line = model.GetLine(row);
 	    if (col + 1 < line.Count) {
@@ -978,7 +978,7 @@ namespace Terminal.Gui {
 	    return false;
 	}
 
-	bool MovePrev(ref int col, ref int row, out Rune rune)
+	bool MovePrev(ref int col, ref int row, out System.Rune rune)
 	{
 	    var line = model.GetLine(row);
 
@@ -1012,18 +1012,18 @@ namespace Terminal.Gui {
 	    var rune = RuneAt(col, row);
 
 	    var srow = row;
-	    if (Rune.IsPunctuation(rune) || Rune.IsWhiteSpace(rune)) {
+	    if (System.Rune.IsPunctuation(rune) || System.Rune.IsWhiteSpace(rune)) {
 		while (MoveNext(ref col, ref row, out rune)) {
-		    if (Rune.IsLetterOrDigit(rune))
+		    if (System.Rune.IsLetterOrDigit(rune))
 			break;
 		}
 		while (MoveNext(ref col, ref row, out rune)) {
-		    if (!Rune.IsLetterOrDigit(rune))
+		    if (System.Rune.IsLetterOrDigit(rune))
 			break;
 		}
 	    } else {
 		while (MoveNext(ref col, ref row, out rune)) {
-		    if (!Rune.IsLetterOrDigit(rune))
+		    if (!System.Rune.IsLetterOrDigit(rune))
 			break;
 		}
 	    }
@@ -1042,18 +1042,18 @@ namespace Terminal.Gui {
 	    var line = GetCurrentLine();
 	    var rune = RuneAt(col, row);
 
-	    if (Rune.IsPunctuation(rune) || Rune.IsSymbol(rune) || Rune.IsWhiteSpace(rune)) {
+	    if (System.Rune.IsPunctuation(rune) || System.Rune.IsSymbol(rune) || System.Rune.IsWhiteSpace(rune)) {
 		while (MovePrev(ref col, ref row, out rune)) {
-		    if (Rune.IsLetterOrDigit(rune))
+		    if (System.Rune.IsLetterOrDigit(rune))
 			break;
 		}
 		while (MovePrev(ref col, ref row, out rune)) {
-		    if (!Rune.IsLetterOrDigit(rune))
+		    if (!System.Rune.IsLetterOrDigit(rune))
 			break;
 		}
 	    } else {
 		while (MovePrev(ref col, ref row, out rune)) {
-		    if (!Rune.IsLetterOrDigit(rune))
+		    if (!System.Rune.IsLetterOrDigit(rune))
 			break;
 		}
 	    }
